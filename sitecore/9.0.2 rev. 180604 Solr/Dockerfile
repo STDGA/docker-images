@@ -29,7 +29,7 @@ RUN Invoke-WebRequest -Uri ('http://archive.apache.org/dist/lucene/solr/{0}/solr
     Move-Item -Path "C:/temp/solr-*" -Destination c:\solr; `
     Install-PackageProvider -Name NuGet -Force | Out-Null; `
     Register-PSRepository -Name SitecoreGallery -SourceLocation https://sitecore.myget.org/F/sc-powershell/api/v2; `
-    Install-Module SitecoreInstallFramework -RequiredVersion 1.1.0 -Force;
+    Install-Module SitecoreInstallFramework -RequiredVersion 1.2.1 -Force;
 
 # Install Sitecore Solr cores using SIF
 COPY . ${INSTALL_TEMP}

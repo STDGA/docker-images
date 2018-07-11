@@ -25,4 +25,4 @@ RUN Start-Process msiexec.exe -ArgumentList '/i', $env:WEBDEPLOY_MSI, '/quiet', 
     Start-Process $env:VCREDISTX64_EXE -ArgumentList '/install', '/passive', '/norestart' -NoNewWindow -Wait; `
     Install-PackageProvider -Name NuGet -Force | Out-Null; `
     Register-PSRepository -Name SitecoreGallery -SourceLocation https://sitecore.myget.org/F/sc-powershell/api/v2; `
-    Install-Module SitecoreInstallFramework -RequiredVersion 1.1.0 -Force;
+    Install-Module SitecoreInstallFramework -RequiredVersion 1.2.1 -Force;
