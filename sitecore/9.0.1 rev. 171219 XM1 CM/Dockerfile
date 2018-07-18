@@ -73,6 +73,9 @@ RUN Expand-Archive -Path (Join-Path $env:INSTALL_TEMP '*.zip') -DestinationPath 
     $element.InnerText=$env:DATAPATH; `
     $xml.Save(('{0}\app_config\include\DataFolder.config' -f $env:SITEPATH));
 
+# Set the app pool to be the DefaultAppPool so environment variables from startup will work
+RUN Import-Module WebAdministration; `
+    Set-ItemProperty IIS:\Sites\$env:SITENAME -name applicationPool -value DefaultAppPool;
 
 # Cleanup, post installation tweaks and start site
 RUN Start-Process msiexec.exe -ArgumentList '/x', $env:WEBDEPLOY_MSI, '/quiet', '/norestart' -NoNewWindow -Wait; `
